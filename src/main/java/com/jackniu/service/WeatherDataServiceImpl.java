@@ -63,7 +63,7 @@ public class WeatherDataServiceImpl implements WeatherDataService{
 
     public void saveWeatherData(String uri){
         ValueOperations<String,String> ops = this.stringRedisTemplate.opsForValue();
-        String key = null;
+        String key = uri;
         String strBody = null;
         ResponseEntity<String> response =  restTemplate.getForEntity(uri,String.class);
         if(response.getStatusCodeValue() == 200){

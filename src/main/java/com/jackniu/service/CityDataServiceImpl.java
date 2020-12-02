@@ -19,6 +19,7 @@ public class CityDataServiceImpl  implements CityDataService{
     public List<City> listCity() throws Exception {
         //读取定义的xml文件
         Resource resource= new ClassPathResource("a.xml");
+        System.out.println(resource.exists());
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 resource.getInputStream(),"utf-8"
         ));
@@ -32,6 +33,8 @@ public class CityDataServiceImpl  implements CityDataService{
         //将XML转换成Java对象
         CityList cityList = (CityList) XmlBuilder.xmlStrToObject(CityList.class,
                 buffer.toString());
+
+        System.out.println("citylist数据内容"+ cityList);
 
         return cityList.getCityList();
     }
